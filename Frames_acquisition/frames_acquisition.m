@@ -40,7 +40,7 @@ k=1;
 sampleTime = 0.04;
 simulationStop = 5.04; % To move the drone (camera) away from car
 
-% The .mat file contains the car dyamics
+% The .mat file contains the car dynamics
 load('test_lap.mat');
 
 % The folder name in which the frames will be stored
@@ -111,7 +111,7 @@ for i=1:length(beta)
         end
         movefile(frameName, folderName);
         
-        % The index of the nex frame
+        % The index of the next frame
         k = k+1;
         
     end
