@@ -1,0 +1,129 @@
+#VRML V2.0 utf8
+
+WorldInfo {
+ title "Vehicle Dynamics Visualization - Multiple Vehicles"
+ info [
+  "Vehicles implemented as EXTERNPROTOs to allow easy instantiation of several vehicles.",
+  "Skoda Octavia model copyright Skoda Auto, courtesy of Ismar VR, Czech Republic.",
+  "Copyright 1998-2013 HUMUSOFT s.r.o. and The MathWorks, Inc."
+ ]
+}
+
+EXTERNPROTO Octavia [
+ exposedField SFVec3f Car_Position
+ exposedField SFRotation Car_Rotation 
+ exposedField SFRotation WheelFL_Rotation 
+ exposedField SFVec3f WheelFL_Translation
+ exposedField SFRotation WheelFL_Spin_Rotation 
+ exposedField SFRotation WheelFR_Rotation 
+ exposedField SFVec3f WheelFR_Translation
+ exposedField SFRotation WheelFR_Spin_Rotation 
+ exposedField SFRotation WheelRL_Rotation 
+ exposedField SFVec3f WheelRL_Translation 
+ exposedField SFRotation WheelRL_Spin_Rotation 
+ exposedField SFRotation WheelRR_Rotation  
+ exposedField SFVec3f WheelRR_Translation 
+ exposedField SFRotation WheelRR_Spin_Rotation 
+ exposedField SFRotation SteeringWheel1_Rotation 
+ exposedField SFInt32 Backlights_Switch
+ exposedField SFInt32 Forces_Switch 
+ exposedField SFVec3f Force1_Scale 
+ exposedField SFVec3f Force2_Scale 
+ exposedField SFVec3f Force3_Scale 
+ exposedField SFVec3f Force4_Scale 
+ exposedField SFColor Car_DiffuseColor 
+ exposedField SFColor Car_SpecularColor 
+ exposedField SFVec3f Body_Scale
+]
+"octavia_protos.wrl#Octavia"
+
+NavigationInfo {
+ visibilityLimit 1000.0
+ avatarSize [0.1 1 1]
+ headlight	FALSE
+ type	["WALK", "ANY"]
+}
+
+Background {
+ groundAngle	[ 0.9, 1.5, 1.57 ]
+ groundColor	[ 0 0.8 0,
+  0.174249 0.82 0.187362,
+  0.467223 0.82 0.445801,
+  0.621997 0.67 0.600279 ]
+ skyAngle	[ 0.1, 1.2, 1.57 ]
+ skyColor	[ 0.76238 0.8 0.1427,
+  0.277798 0.219779 0.7,
+  0.222549 0.390234 0.7,
+  0.60094 0.662637 0.69 ]
+}
+
+DirectionalLight {
+ direction -1 -1 -1
+ intensity 0.7
+}
+DirectionalLight {
+ direction 0 0 1
+ intensity 0.6
+}
+DirectionalLight {
+ direction 1 -1 -1
+ intensity 0.7
+}
+
+DEF Car_1 Octavia {
+}
+
+DEF Car_2 Octavia {
+}
+
+DEF FlyingCamera Viewpoint {
+ position	0 2 10
+ description	"Simulink Controlled Viewpoint"
+}
+
+# Road
+DEF RoadSystem Transform {
+ children Inline {
+  url "octavia_road_flat.wrl"
+ }
+}
+
+# Surrounding objects dependent on manoeuvre settings (cones...)
+DEF Surrounding_Objects Transform {
+	children Inline {
+		url "octavia_lchg_cones.wrl"
+	}
+}
+
+DEF Startline Transform {
+ children Shape {
+  appearance	Appearance {
+   material	Material {
+    diffuseColor	1 1 1
+    emissiveColor	1 1 1
+   }
+  }
+  geometry	Box {
+   size	0.1 0.04 8
+  }
+ }
+}
+
+Viewpoint {
+ position 0 30 0
+ orientation 1 0 0 -1.5708
+ description "Scene in XY"
+ jump	TRUE
+}
+Viewpoint {
+ position 0 5 30
+ orientation 0 1 0 0
+ description "Scene in XZ"
+ jump	TRUE
+}
+Viewpoint {
+ position -30 5 0
+ orientation 0 1 0 -1.5708
+ description "Scene in YZ"
+ jump	TRUE
+}
