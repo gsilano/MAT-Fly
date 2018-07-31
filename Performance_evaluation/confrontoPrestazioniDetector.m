@@ -28,7 +28,7 @@ clc
 captionFontSize = 14;
 
 % The date. It is used to distinguish the simulation results
-experimentDate = '20170521_1717';
+experimentDate = '1415_20180727';
 
 % The folder that contains the test images
 testImages = 'testImages';
