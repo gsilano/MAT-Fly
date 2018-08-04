@@ -18,9 +18,9 @@
 
 % The reference area employed by the reference generator
 reference_area = 30000;                 % Empirical value computed during the frame acquisition phase [px^2]
-radius = 15;                            % Distance used to compute Distanza utilizzata per il calcolo dell'area di riferimento, [metri]
+radius = 15;                            % Distance used to compute the reference are during the frame acquisition phase [m]
 
-% Images paramters
+% Images parameters
 w_im = 600; %Width [px] 
 h_im = 800; % Height [px]
 
@@ -32,9 +32,9 @@ roll_regulator_pre = roll_initial;
 % Position previous values (k-1 step) taking into account the virtual world
 % reference system quite different with respect to the inertial one. For
 % more details take a look at the paper.
-z_pross_pre = y_pross;                 % Previous step
-x_pross_pre = x_pross;                 % Previous step
-y_pross_pre = -z_pross;                % Previous step
+z_next_pre = y_pross;                 % Previous step
+x_next_pre = x_pross;                 % Previous step
+y_next_pre = -z_pross;                % Previous step
 
 % The initial attitude errors at the previous step (k-1)
 error_pitch_pre = pitch_initial;
@@ -49,7 +49,7 @@ error_distance_pre = 0;
 k_pitch_p = 0;
 k_yaw_p = 0;
 
-% Integral gains on the attidue angles: yaw and pitch
+% Integral gains on the attitude angles: yaw and pitch
 k_pitch_i = -1e-3;
 k_yaw_i = -1e-3;
 
@@ -69,7 +69,7 @@ k_z_d = +3.75;
 % The derivate part of the controller is initialized
 derivate_action_z = 0;
 
-% The integral actions are initilizated. The integral contribute of the
+% The integral actions are initialized. The integral contribute of the
 % controller is computed as I(k+1) = I(k-1) + I_g * E, where I(k+1) is the
 % contribute of the next step, I(k-1) the contribute of the previous step,
 % I_g the integral gain and E the error
@@ -79,7 +79,7 @@ integral_contribute_x = 0;
 integral_contribute_z = 0;
 integral_contribute_y = 0;
 
-% It is hypotized that the drone is able to see the car at first step. Such
+% Supposed that the drone is able to see the car at first step. Such
 % hypothesis is not strong. In fact, the drone orientation can me changed
 % trying to understand what it happens when it is different respect to now.
 angolo_yaw_reference = yaw_initial;      
@@ -105,7 +105,7 @@ z_dot_prec = 0;
 
 %%                                                              QUADROTOR POSITION CONTROL PARAMETERS
 
-% Paramters for the trajectory tracking control
+% Parameters for the trajectory tracking control
 lambda_5 = 0.025;
 lambda_6 = 0.025;
 
@@ -142,7 +142,7 @@ kdz = 20e1;
  
 % The frame number is employed to understand how many the simulation has to
 % be run
-frameNumber = floor(end_time - start_time)/Step;   % Take a look a the help of the floor funciton
+frameNumber = floor(end_time - start_time)/Step;   % Take a look a the help of the floor function
 
 % The vectors contain the errors come out from the image computing. For
 % more information take a look at the paper, in particular the section
@@ -166,7 +166,7 @@ x_dot_pre_vect = zeros(1, frameNumber);
 y_dot_pre_vect = zeros(1, frameNumber);
 z_dot_pre_vect = zeros(1, frameNumber);
 
-% The observer position and orientaton come out from the reference
+% The observer position and orientation come out from the reference
 % generator
 observer_position_reference_generator_vett = zeros(3, frameNumber);
 observer_orientation_reference_generator_vett = zeros(3, frameNumber);

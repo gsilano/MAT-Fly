@@ -42,9 +42,25 @@ for l=1:frameNumber
         
     % Drone dynamics
     drone_dynamics
+    
+    
+    %%                                                  PARAMTERS FOR THE NEXT SIMULATION STEP
+
+    % The frame index is incremented
+    k = k + 1;
+
+    % The simulation time values are updated
+    start_time =  stop_time;
+    stop_time = stop_time + step; %+ simulation_time_drone;
+
+    % The variables is turned low
+    first_cycle = 0;
    
 end
 
 
 % Data storing
 data_storing
+
+% Data computing
+data_computing

@@ -28,9 +28,9 @@ detector = 'carDetector_virtual_world_Haar.xml';
 
 % The initial drone (camera) position expressed in the [xyz] reference
 % system
-y_pross = 4; % [m]
-x_pross = 15; % [m]
-z_pross = 0; % [m]
+y_next = 4; % [m]
+x_next = 15; % [m]
+z_next = 0; % [m]
 
 % The initial drone attitude expressed in the [xyz] reference system
 yaw_initial = 0; % [rad]

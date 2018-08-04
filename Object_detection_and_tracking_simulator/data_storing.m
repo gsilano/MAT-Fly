@@ -1,73 +1,92 @@
-%%                                                          SALVO I DATI DELLA SIMULAZIONE
+% Copyright 2018 Giuseppe Silano, University of Sannio in Benevento, Italy
+% Copyright 2018 Luigi Iannelli, University of Sannio in Benevento, Italy
+%
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%
+%     http://www.apache.org/licenses/LICENSE-2.0
+% 
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+% 
+
+%%                                                              SAVING SIMULATION DATA
 
 
-%Sposto le immagini nella relativa cartella, se non è presente la creo
-cartellaFileMat = 'FileMat';
-if ~(exist(cartellaFileMat, 'dir'))
-    mkdir(cartellaFileMat);
+% The MAT-files are moved into a suitable folder. If such folder does not
+% exist, it is created
+folderMatFile = 'FileMat';
+if ~(exist(folderMatFile, 'dir'))
+    mkdir(folderMatFile);
 end
 
-%Nomi file .mat
-nomeMatFileInformazioniVarie = 'informazioniVarie.mat';
-nomeMatFileErroreXPixel = 'erroreXPixel.mat';
-nomeMatFileErroreYPixel = 'erroreYPixel.mat';
-nomeMatFileErroreAreaPixel = 'erroreAreaPixel.mat';
-nomeMatFileErroreAngolaYawReferenceGenerator = 'erroreYawReferenceGenerator.mat';
-nomeMatFileErroreAngoloPitchReferenceGenerator = 'errorePitchReferenceGenerator.mat';
-nomeMatFileChi_6 = 'chi_6.mat';
-nomeMatFileChi_5 = 'chi_5.mat';
-nomeMatFilePsi_dot = 'psi_dot.mat';
-nomeMatFilePhi_dot = 'phi_dot.mat';
-nomeMatFileTheta_dot = 'theta_dot.mat';
-nomeMatFileX_dot = 'x_dot.mat';
-nomeMatFileY_dot = 'y_dot.mat';
-nomeMatFileZ_dot = 'z_dot.mat';
-nomeMatFileObserverPositionReferenceGenerator = 'observerPositionReferenceGenerator.mat';
-nomeMatFileObserverOrientationReferenceGenerator = 'observerOrientationReferenceGenerator.mat';
-nomeMatFilePosizioneAuto = 'posizioneAuto.mat';
-nomeMatFilePosizioneDrone = 'posizioneDrone.mat';
-nomeMatFileOrientamentoDrone = 'orientamentoDrone.mat';
+% Mat-file naming
+nameMatFileVariousInformation = 'variousInformation.mat';
+nameMatFileErrorXPixel = 'errorXPixel.mat';
+nameMatFileErrorYPixel = 'errorYPixel.mat';
+nameMatFileErrorAreaPixel = 'errorAreaPixel.mat';
+nameMatFileErrorAngleYawReferenceGenerator = 'errorYawReferenceGenerator.mat';
+nameMatFileErrorAnglePitchReferenceGenerator = 'errorPitchReferenceGenerator.mat';
+nameMatFileChi_6 = 'chi_6.mat';
+nameMatFileChi_5 = 'chi_5.mat';
+nameMatFilePsi_dot = 'psi_dot.mat';
+nameMatFilePhi_dot = 'phi_dot.mat';
+nameMatFileTheta_dot = 'theta_dot.mat';
+nameMatFileX_dot = 'x_dot.mat';
+nameMatFileY_dot = 'y_dot.mat';
+nameMatFileZ_dot = 'z_dot.mat';
+nameMatFileObserverPositionReferenceGenerator = 'observerPositionReferenceGenerator.mat';
+nameMatFileObserverOrientationReferenceGenerator = 'observerOrientationReferenceGenerator.mat';
+nameMatFilePositionAuto = 'positionAuto.mat';
+nameMatFilePositionDrone = 'positionDrone.mat';
+nameMatFileAttitudeDrone = 'attitudeDrone.mat';
 
-%Salvo i file .mat
-save(nomeMatFileInformazioniVarie, 'tempo_simulazione', 'passo', 'area_di_riferimento', 'raggio', 'g', 'm', 'l', 'd', 'b', 'Jr', 'Iz', 'Iy', 'Ix', ...
+% Mat-files storing
+save(nameMatFileVariousInformation, 'simulation_time', 'step', 'reference_area', 'radius', 'g', 'm', 'l', 'd', 'b', 'Jr', 'Iz', 'Iy', 'Ix', ...
     'kpz', 'kdz', 'kpps', 'kdps', 'kpt', 'kdt', 'kpp', 'kdp', 'C_12', 'C_11', 'C_10', 'C_9', 'lambda_6', 'lambda_5', 'k_z_d', 'k_y_i', 'k_z_i', ...
     'k_area_i', 'k_y_p', 'k_z_p', 'k_area_p', 'k_yaw_i', 'k_pitch_i', 'k_yaw_p', 'k_pitch_p', 'w_im', 'h_im');
-save(nomeMatFileErroreXPixel, 'errore_x_pixel_vett');
-save(nomeMatFileErroreYPixel, 'errore_y_pixel_vett');
-save(nomeMatFileErroreAreaPixel , 'errore_area_vett');
-save(nomeMatFileErroreAngolaYawReferenceGenerator , 'errore_angolo_yaw_vett');
-save(nomeMatFileErroreAngoloPitchReferenceGenerator , 'errore_angolo_pitch_vett');
-save(nomeMatFileChi_6 , 'chi_6_prec_1_vett');
-save(nomeMatFileChi_5 , 'chi_5_prec_1_vett');
-save(nomeMatFilePsi_dot , 'psi_dot_prec_1_vett');
-save(nomeMatFilePhi_dot , 'phi_dot_prec_1_vett');
-save(nomeMatFileTheta_dot , 'theta_dot_prec_1_vett');
-save(nomeMatFileX_dot , 'x_dot_prec_1_vett');
-save(nomeMatFileY_dot , 'y_dot_prec_1_vett');
-save(nomeMatFileZ_dot , 'z_dot_prec_1_vett');
-save(nomeMatFileObserverPositionReferenceGenerator , 'observer_position_reference_generator_vett');
-save(nomeMatFileObserverOrientationReferenceGenerator , 'observer_orientation_reference_generator_vett');
-save(nomeMatFilePosizioneDrone , 'posizione_auto'); 
-save(nomeMatFileOrientamentoDrone , 'posizione_drone');
+save(nameMatFileErrorXPixel, 'error_x_pixel_vett');
+save(nameMatFileErrorYPixel, 'error_y_pixel_vett');
+save(nameMatFileErrorAreaPixel , 'error_area_vett');
+save(nameMatFileErrorAngleYawReferenceGenerator , 'error_angolo_yaw_vett');
+save(nameMatFileErrorAnglePitchReferenceGenerator , 'error_angolo_pitch_vett');
+save(nameMatFileChi_6 , 'chi_6_pre_vect');
+save(nameMatFileChi_5 , 'chi_5_pre_vect');
+save(nameMatFilePsi_dot , 'psi_dot_prec_vect');
+save(nameMatFilePhi_dot , 'phi_dot_prec_vect');
+save(nameMatFileTheta_dot , 'theta_dot_pre_vect');
+save(nameMatFileX_dot , 'x_dot_pre_vect');
+save(nameMatFileY_dot , 'y_dot_pre_vect');
+save(nameMatFileZ_dot , 'z_dot_pre_vect');
+save(nameMatFileObserverPositionReferenceGenerator , 'observer_position_reference_generator_vett');
+save(nameMatFileObserverOrientationReferenceGenerator , 'observer_orientation_reference_generator_vett');
+save(nameMatFilePositionAuto , 'position_auto'); 
+save(nameMatFileAttitudeDrone , 'position_drone');
+save(nameMatFileAttitudeDrone, 'attitude_drone');
 
-%Li sposto nella specifica cartella
-movefile(nomeMatFileInformazioniVarie, cartellaFileMat);
-movefile(nomeMatFileErroreXPixel, cartellaFileMat);
-movefile(nomeMatFileErroreYPixel, cartellaFileMat);
-movefile(nomeMatFileErroreAreaPixel , cartellaFileMat);
-movefile(nomeMatFileErroreAngolaYawReferenceGenerator , cartellaFileMat);
-movefile(nomeMatFileErroreAngoloPitchReferenceGenerator , cartellaFileMat);
-movefile(nomeMatFileChi_6 , cartellaFileMat);
-movefile(nomeMatFileChi_5 , cartellaFileMat);
-movefile(nomeMatFilePsi_dot , cartellaFileMat);
-movefile(nomeMatFilePhi_dot , cartellaFileMat);
-movefile(nomeMatFileTheta_dot , cartellaFileMat);
-movefile(nomeMatFileX_dot , cartellaFileMat);
-movefile(nomeMatFileY_dot , cartellaFileMat);
-movefile(nomeMatFileZ_dot , cartellaFileMat);
-movefile(nomeMatFileObserverPositionReferenceGenerator , cartellaFileMat);
-movefile(nomeMatFileObserverOrientationReferenceGenerator , cartellaFileMat);
-movefile(nomeMatFilePosizioneDrone , cartellaFileMat); 
-movefile(nomeMatFileOrientamentoDrone , cartellaFileMat);
+% Moving the files into the folder
+movefile(nameMatFileVariousInformation, folderMatFile);
+movefile(nameMatFileErrorXPixel, folderMatFile);
+movefile(nameMatFileErrorYPixel, folderMatFile);
+movefile(nameMatFileErrorAreaPixel , folderMatFile);
+movefile(nameMatFileErrorAngleYawReferenceGenerator , folderMatFile);
+movefile(nameMatFileErrorAnglePitchReferenceGenerator , folderMatFile);
+movefile(nameMatFileChi_6 , folderMatFile);
+movefile(nameMatFileChi_5 , folderMatFile);
+movefile(nameMatFilePsi_dot , folderMatFile);
+movefile(nameMatFilePhi_dot , folderMatFile);
+movefile(nameMatFileTheta_dot , folderMatFile);
+movefile(nameMatFileX_dot , folderMatFile);
+movefile(nameMatFileY_dot , folderMatFile);
+movefile(nameMatFileZ_dot , folderMatFile);
+movefile(nameMatFileObserverPositionReferenceGenerator , folderMatFile);
+movefile(nameMatFileObserverOrientationReferenceGenerator , folderMatFile);
+movefile(nameMatFilePositionDrone , folderMatFile); 
+movefile(nameMatFilePositionAuto , folderMatFile); 
+movefile(nameMatFileAttitudeDrone , folderMatFile);
 
 

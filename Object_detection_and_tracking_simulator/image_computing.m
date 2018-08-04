@@ -16,7 +16,7 @@
 
 %%                                                          FRAMES ACQUIRING AND COMPUTING
 
-% The frames are aqcuired and computed in order to detect and recognize the
+% The frames are acquired and computed in order to detect and recognize the
 % car into the scenario
 
 % Each frame is distinguished from the other by using a name, in particular
@@ -127,8 +127,8 @@ if(size(bbox,1) > 0)
     matrix_edges = bbox2points(bbox_max);
 
     % For more information take at the relative section into the paper
-    x_bb = bbox_max(1,1);           %Horizontal distnace, bbox_max = [x, y, width, height]
-    y_bb = bbox_max(1,2);           %Vertial distance, bbox_max = [x, y, width, height]
+    x_bb = bbox_max(1,1);           %Horizontal distance, bbox_max = [x, y, width, height]
+    y_bb = bbox_max(1,2);           %Vertical distance, bbox_max = [x, y, width, height]
 
     % Width and height of the target covered by the bounding box
     w_bb = bbox_max(1,3);  %bbox_max = [x, y, width, height]
@@ -150,7 +150,7 @@ if(size(bbox,1) > 0)
     set(figure_1, 'Position', [50 50 576 631]);
     plot(x_centroid_img, y_centroid_img, 'yx', 'MarkerSize', 10, 'LineWidth', 4);
 
-    % Boundin box centroid
+    % Bounding box centroid
     plot(x_centroid_bounding_box, y_centroid_bounding_box, 'gx', 'MarkerSize', 10, 'LineWidth', 4);
 
     % The arrow between the two centroid is inserted on the image
@@ -178,16 +178,16 @@ if(size(bbox,1) > 0)
          mkdir(figureFolder);
     end
 
-    %Salvo immagine su file .fig e .tif
+    % Image saving on .fig and .tif files
     nameFrameVector = strcat('centroidsVector_', num2str(k), '.tif');
-    nameFiguraVector = strcat('centroidsVector_', num2str(k), '.fig');
+    nameFigureVector = strcat('centroidsVector_', num2str(k), '.fig');
     F = getframe;
     [X,map] = frame2im(F);
     imwrite([X,map], nameFrameVector);
-    savefig(figure_1, nameFiguraVector);
+    savefig(figure_1, nameFigureVector);
     close all
     movefile(nameFrameVector, imageFolder);
-    movefile(nameFiguraVector, figureFolder);
+    movefile(nameFigureVector, figureFolder);
 
 
 %%                                                                  DRONE CONTROL

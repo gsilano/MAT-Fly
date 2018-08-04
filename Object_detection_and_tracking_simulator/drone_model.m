@@ -1,92 +1,92 @@
-%%                                                            MODELLO DEL DRONE
+% Copyright 2018 Giuseppe Silano, University of Sannio in Benevento, Italy
+% Copyright 2018 Luigi Iannelli, University of Sannio in Benevento, Italy
+%
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%
+%     http://www.apache.org/licenses/LICENSE-2.0
+% 
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+% 
 
-%Utilizzo i riferimenti estratti dai singoli ai frame come riferimenti
-%per la traiettoria da inviare al modello del drone
+%%                                                                  DRONE MODEL
 
-inizio_simulazione = 0;     %[s]
-fine_simulazione = 10;       %[s]
+% The reference value extracted from the each frame are used as reference
+% for the drone trajectory
+% The simulation does not work in synchronized way. For more information
+% take a look at the paper.
+start_simulation_drone = 0;      %[s]
+end_simulation_drone = 10;       %[s]
 
-%Posizione di riferimento  fornita dal reference generator
-observer_position_reference_generator = [z_pross y_pross x_pross];
-observer_position_reference_generator_vett (:,l) = observer_position_reference_generator;
+% Position reference computed by the reference generator
+observer_position_reference_generator = [z_next y_next x_next];
+observer_position_reference_generator_vect (:,l) = observer_position_reference_generator;
 
-observer_orientation_reference_generator = [yaw_regolatore pitch_regolatore 0];
-observer_orientation_reference_generator_vett(:,l) = observer_orientation_reference_generator;
+observer_orientation_reference_generator = [yaw_regulator pitch_regulator 0];
+observer_orientation_reference_generator_vect(:,l) = observer_orientation_reference_generator;
 
-%Cambio coordinate del sistema per porle in ingresso al modello del drone
-x_pross_drone = x_pross;
-y_pross_drone = -z_pross;
-z_pross_drone = y_pross;
+% The reference system changing. The drone model is described in the fixed
+% inertial frame and not in the MathWorks VR one
+x_next_drone = x_next;
+y_next_drone = -z_next;
+z_next_drone = y_next;
 
-%Lancio la simulazione
-mdl_drone = 'PDQuadrotor_con_controllo_di_posizione';
+% Simulation start
+mdl_drone = 'PDQuadrotor_with_the_position_control';
 load_system(mdl_drone);
 sim(mdl_drone);
 
-%Salvo le variabili di stato degli integratori, in questo modo il
-%modello tiene conto del fatto che l'UAV al passo precedente non era
-%fermo ma era già in volo ed è solo cambiato il punto di riferimento
+% The drone state variables are store. They will be used into the next step
+% Position errors at the previous step
+chi_6_pre = chi_6(end);
+chi_5_pre = chi_5(end);
 
-%Errori di posizione istante precendete
-chi_6_prec_1 = chi_6(end);
-chi_5_prec_1 = chi_5(end);
+% Angular accelerations at the previous step are updating
+phi_dot_pre = phi_dot(end);
+theta_dot_pre = theta_dot(end);
+psi_dot_pre = psi_dot(end);
 
-%Accelerazioni angolari allo stato precedente
-phi_dot_prec_1 = phi_dot(end);
-theta_dot_prec_1 = theta_dot(end);
-psi_dot_prec_1 = psi_dot(end);
+% Linear velocities at the previous step are updating
+x_dot_pre = x_dot(end);
+y_dot_pre = y_dot(end);
+z_dot_pre = z_dot(end);
 
-%Velocità allo stato precedente
-x_dot_prec_1 = x_dot(end);
-y_dot_prec_1 = y_dot(end);
-z_dot_prec_1 = z_dot(end);
+% The angle values at the previous step are updating
+pitch_regolatore_pre = theta_meas(end);
+yaw_regolatore_pre = psi_meas(end);
+roll_regolatore_pre = phi_meas(end);
 
-%Aggiorno il valore dell'angolo al passo precedente con il nuovo valore
-pitch_regolatore_prec_1 = theta_mis(end);
-yaw_regolatore_prec_1 = psi_mis(end);
-roll_regolatore_prec_1 = phi_mis(end);
+% The position at the previous step is updated
+z_next_pre = z_meas(end);
+x_next_pre = x_meas(end);
+y_next_pre = y_meas(end);
 
-%Aggiorno il valore della posizione al passo precedente con il nuovo
-%valore
-z_pross_prec_1 = z_mis(end);
-x_pross_prec_1 = x_mis(end);
-y_pross_prec_1 = y_mis(end);
+% The drone pose is updated. Later, it will be used in the virtual world
+% reality environment
+z_next = -y_meas(end);
+y_next = z_meas(end);
+x_next = x_meas(end);
 
-%Aggiorno la posa del velivolo che sarà utilizzata per il rendering
-%nell'ambiente di realtà virtuale
-z_pross = -y_mis(end);
-y_pross = z_mis(end);
-x_pross = x_mis(end);
+% The drone attitude. It is used for the analysis part of the script
+roll_virtual = phi_meas(end);
+yaw_virtual = psi_meas(end);
+pitch_virtual = theta_meas(end); 
 
-%Orientamento assunto dal drone che poi invio all'ambiente virtuale.
-%Variabili create solo per tenere traccia dell'evoluzione
-roll_virtuale = phi_mis(end);
-yaw_virtuale = psi_mis(end);
-pitch_virtuale = theta_mis(end); 
+% The variables values along the time are monitored. The aim is to monitor
+% the error when the system evolves
+chi_6_pre_vect(1,l) = chi_6_pre;
+chi_5_pre_vect(1,l) = chi_5_pre;
 
-%Tengo traccia dell'evoluzione delle variabili nel tempo, ciò mi
-%consente di indiviudare possibili errori durante l'evoluzione del
-%sistema
-chi_6_prec_1_vett(1,l) = chi_6_prec_1;
-chi_5_prec_1_vett(1,l) = chi_5_prec_1;
+psi_dot_pre_vect(1,l) = psi_dot_pre;
+phi_dot_pre_vect(1,l) = phi_dot_pre;
+theta_dot_pre_vect(1,l) = theta_dot_pre;
 
-psi_dot_prec_1_vett(1,l) = psi_dot_prec_1;
-phi_dot_prec_1_vett(1,l) = phi_dot_prec_1;
-theta_dot_prec_1_vett(1,l) = theta_dot_prec_1;
+x_dot_pre_vect(1,l) = x_dot_pre;
+y_dot_pre_vect(1,l) = y_dot_pre;
+z_dot_pre_vect(1,l) = z_dot_pre;
 
-x_dot_prec_1_vett(1,l) = x_dot_prec_1;
-y_dot_prec_1_vett(1,l) = y_dot_prec_1;
-z_dot_prec_1_vett(1,l) = z_dot_prec_1;
-
-
-%%                                                  PARAMETRI PER LA PROSSIMA SIMULAZIONE
-
-%Incremento l'indice delle foto
-k = k + 1;
-
-%Aggiorno i tempi della simulazione 
-tempo_simulazione_drone = fine_simulazione;
-start_time =  stop_time;
-stop_time = stop_time + passo; %+ tempo_simulazione_drone;
-
-primo_ciclo = 0;

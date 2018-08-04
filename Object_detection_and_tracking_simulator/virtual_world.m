@@ -17,14 +17,14 @@
 %%                                                THE CAR AND DRONE DYNAMICS ARE SIMULATED IN THE VIRTUAL WORLD   
     
 % Th observer position is updated
-observer_position = [z_pross y_pross x_pross];
+observer_position = [z_next y_next x_next];
 
 % The observer orientation is updated. 
 observer_orientation = [yaw_virtual pitch_virtual roll_virtual];
 
 % The drone position and attitude are stored in vectors in order to analyze
 % the data at the end of the simulation
-position_drone(l,:) = [z_pross y_pross x_pross];
+position_drone(l,:) = [z_next y_next x_next];
 orientation_drone(l,:) = observer_orientation;
 
 % The rotation matrix computing

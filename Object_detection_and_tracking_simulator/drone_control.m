@@ -1,64 +1,78 @@
-%%                                                  CONTROLLO DI ORIENTAMENTO - REFERENCE GENERATOR
+% Copyright 2018 Giuseppe Silano, University of Sannio in Benevento, Italy
+% Copyright 2018 Luigi Iannelli, University of Sannio in Benevento, Italy
+%
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%
+%     http://www.apache.org/licenses/LICENSE-2.0
+% 
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+% 
 
-%Calcolo l'errore
-errore_pitch = y_centroid_img - y_centroid_bounding_box;
-errore_yaw = x_centroid_img - x_centroid_bounding_box;
+%%                                                          ATTITUDE CONTROL - REFERENCE GENERATOR
 
-%Colleziono i valori assunti dall'errore per poi graficarli al termine
-%della simulazione
-errore_x_pixel_vett(1,l) = errore_yaw;
-errore_y_pixel_vett(1,l) = errore_pitch;
+% Error computing
+error_pitch = y_centroid_img - y_centroid_bounding_box;
+error_yaw = x_centroid_img - x_centroid_bounding_box;
 
-%Controllo di orientazione
-azione_integrale_pitch = azione_integrale_pitch + passo*k_pitch_i*errore_pitch;
-azione_proporzionale_pitch = k_pitch_p*errore_pitch;  
-delta_pitch_regolatore =  azione_integrale_pitch + azione_proporzionale_pitch;
-pitch_regolatore = delta_pitch_regolatore + pitch_iniziale;
+% The errors values are stored in suitable vectors
+error_x_pixel_vett(1,l) = error_yaw;
+error_y_pixel_vett(1,l) = error_pitch;
 
-azione_integrale_yaw = azione_integrale_yaw + passo*k_yaw_i*errore_yaw;
-azione_proporzionale_yaw = k_yaw_p*errore_yaw;
-delta_yaw_regolatore = azione_integrale_yaw + azione_proporzionale_yaw;
-yaw_regolatore = delta_yaw_regolatore + yaw_iniziale;
+% Attitude control
+integral_action_pitch = integral_action_pitch + step*k_pitch_i*error_pitch;
+proportional_action_pitch = k_pitch_p*error_pitch;  
+delta_pitch_regulator =  integral_action_pitch + proportional_action_pitch;
+pitch_regulator = delta_pitch_regulator + pitch_initial;
 
-%Aggiorno il valore dell'errore al passo precedente
-errore_pitch_prec_1  = errore_pitch;
-errore_yaw_prec_1 = errore_yaw;
+integral_action_yaw = integral_action_yaw + step*k_yaw_i*error_yaw;
+proportional_action_yaw = k_yaw_p*error_yaw;
+delta_yaw_regulator = integral_action_yaw + proportional_action_yaw;
+yaw_regulator = delta_yaw_regulator + yaw_initial;
+
+% The previous values are updated
+error_pitch_pre  = error_pitch;
+error_yaw_pre = error_yaw;
 
 
-%%                                                    CONTROLLO DI POSIZIONE - REFERENCE GENERATOR    
+%%                                                    POSITION CONTROL - REFERENCE GENERATOR    
 
-%Area bounding box
+% Bounding box are
 area_bounding_box = w_bb * h_bb; 
 
-%Calcolo dell'errore
-errore_area = area_di_riferimento - area_bounding_box;
-errore_angolo_yaw = angolo_yaw_riferimento - yaw_regolatore;
-errore_angolo_pitch = angolo_pitch_riferimento - pitch_regolatore;
+% Error computing
+error_area = reference_area - area_bounding_box;
+error_angle_yaw = angle_yaw_reference - yaw_regulator;
+error_angle_pitch = angole_pitch_reference - pitch_regulator;
 
-%Salvo l'errore per poi plottarlo
-errore_area_vett(1,l) = errore_area;
-errore_angolo_yaw_vett(1,l) = errore_angolo_yaw;
-errore_angolo_pitch_vett(1,l) = errore_angolo_pitch;
+% The error are saved into vectors. They will be used in the plotting
+% section of script
+error_area_vect(1,l) = error_area;
+error_angle_yaw_vect(1,l) = error_angle_yaw;
+error_angle_pitch_vect(1,l) = error_angle_pitch;
 
-%Stuttura sistema di controllo
-%controllore = proporzionale + intergrativo
-azione_integrale_x = azione_integrale_x + passo*k_area_i*errore_area;
-azione_proporzionale_x = k_area_p*errore_area;
-delta_x_pross =  azione_proporzionale_x + azione_integrale_x;         
-x_pross = delta_x_pross + x_iniziale;
+integral_action_x = integral_action_x + step*k_area_i*error_area;
+proportional_action_x = k_area_p*error_area;
+delta_x_next =  proportional_action_x + integral_action_x;         
+x_next = delta_x_next + x_initial;
 
-azione_integrale_z = azione_integrale_z + passo*k_z_i*errore_angolo_yaw;
-azione_derivativa_z = k_z_d*((errore_angolo_yaw - errore_angolo_yaw_prec_1)/passo);
-azione_proporzionale_z = k_z_p*errore_angolo_yaw;
-delta_z_pross = azione_proporzionale_z + azione_integrale_z + azione_derivativa_z;
-z_pross = delta_z_pross + z_iniziale;
+integral_action_z = integral_action_z + step*k_z_i*error_angle_yaw;
+derivative_action_z = k_z_d*((error_angle_yaw - error_angle_yaw_pre)/step);
+proportional_action_z = k_z_p*error_angle_yaw;
+delta_z_next = proportional_action_z + integral_action_z + derivative_action_z;
+z_next = delta_z_next + z_initial;
 
-azione_integrale_y =  azione_integrale_y + passo*k_y_i*errore_angolo_pitch;
-azione_proporzionale_y = k_y_p*errore_angolo_pitch;
-delta_y_pross =  azione_proporzionale_y + azione_integrale_y; 
-y_pross = delta_y_pross + y_iniziale;
+integral_action_y =  integral_action_y + step*k_y_i*error_angle_pitch;
+proportional_action_y = k_y_p*error_angle_pitch;
+delta_y_next =  proportional_action_y + integral_action_y; 
+y_next = delta_y_next + y_initial;
 
-%Aggiorno le variabili dell'errore al passo precedente
-errore_angolo_yaw_prec_1 = errore_angolo_yaw;
-errore_angolo_pitch_prec_1 =  errore_angolo_pitch;
-errore_distance_prec_1 = errore_area;
+% The error variable at the previous step are updated
+error_angle_yaw_pre = error_angle_yaw;
+error_angle_pitch_pre =  error_angle_pitch;
+error_distance_pre = error_area;
