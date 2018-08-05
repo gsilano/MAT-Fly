@@ -32,9 +32,9 @@ roll_regulator_pre = roll_initial;
 % Position previous values (k-1 step) taking into account the virtual world
 % reference system quite different with respect to the inertial one. For
 % more details take a look at the paper.
-z_next_pre = y_pross;                 % Previous step
-x_next_pre = x_pross;                 % Previous step
-y_next_pre = -z_pross;                % Previous step
+z_next_pre = y_next;                 % Previous step
+x_next_pre = x_next;                 % Previous step
+y_next_pre = -z_next;                % Previous step
 
 % The initial attitude errors at the previous step (k-1)
 error_pitch_pre = pitch_initial;
@@ -64,7 +64,7 @@ k_z_i = -57.5;
 k_y_i = 1e-2;
 
 % Derivate gains of the position controller
-k_z_d = +3.75;
+k_z_d = 3.75;
 
 % The derivate part of the controller is initialized
 derivate_action_z = 0;
@@ -73,17 +73,17 @@ derivate_action_z = 0;
 % controller is computed as I(k+1) = I(k-1) + I_g * E, where I(k+1) is the
 % contribute of the next step, I(k-1) the contribute of the previous step,
 % I_g the integral gain and E the error
-integral_contribute_pitch = 0;
-integral_contribute_yaw = 0;
-integral_contribute_x = 0;
-integral_contribute_z = 0;
-integral_contribute_y = 0;
+integral_action_pitch = 0;
+integral_action_yaw = 0;
+integral_action_x = 0;
+integral_action_z = 0;
+integral_action_y = 0;
 
 % Supposed that the drone is able to see the car at first step. Such
 % hypothesis is not strong. In fact, the drone orientation can me changed
 % trying to understand what it happens when it is different respect to now.
-angolo_yaw_reference = yaw_initial;      
-angolo_pitch_reference =  pitch_initial;
+angle_yaw_reference = yaw_initial;      
+angle_pitch_reference =  pitch_initial;
 
 %%                                                      INITIAL CONDITION CONTROLLER VARIABLES
 
@@ -99,9 +99,9 @@ theta_dot_pre = 0;
 psi_dot_pre = 0;
     
 % Drone linear velocity at the previous step
-x_dot_prec = 0;
-y_dot_prec = 0;
-z_dot_prec = 0;
+x_dot_pre = 0;
+y_dot_pre = 0;
+z_dot_pre = 0;
 
 %%                                                              QUADROTOR POSITION CONTROL PARAMETERS
 
@@ -142,7 +142,7 @@ kdz = 20e1;
  
 % The frame number is employed to understand how many the simulation has to
 % be run
-frameNumber = floor(end_time - start_time)/Step;   % Take a look a the help of the floor function
+frameNumber = floor(end_time - start_time)/simulationStep;   % Take a look a the help of the floor function
 
 % The vectors contain the errors come out from the image computing. For
 % more information take a look at the paper, in particular the section
@@ -155,8 +155,8 @@ error_angle_pitch_vect = zeros(1, frameNumber);
 
 % The vectors reported below allow to monitor the variables come out from
 % the drone model and control
-chi_6_prec_vect = zeros(1, frameNumber);
-chi_5_prec_vect = zeros(1, frameNumber);
+chi_6_pre_vect = zeros(1, frameNumber);
+chi_5_pre_vect = zeros(1, frameNumber);
     
 psi_dot_pre_vect = zeros(1, frameNumber);
 phi_dot_pre_vect = zeros(1, frameNumber);
@@ -168,8 +168,8 @@ z_dot_pre_vect = zeros(1, frameNumber);
 
 % The observer position and orientation come out from the reference
 % generator
-observer_position_reference_generator_vett = zeros(3, frameNumber);
-observer_orientation_reference_generator_vett = zeros(3, frameNumber);
+observer_position_reference_generator_vect = zeros(3, frameNumber);
+observer_orientation_reference_generator_vect = zeros(3, frameNumber);
 
 % The car and drone positions are stored for comparing the trajectory at
 % the end of the simulation
@@ -178,4 +178,4 @@ position_drone = zeros(frameNumber, 3);
 orientation_drone = zeros(frameNumber, 3);
 
 % Such variable is used to detect the car at the first step
-first_cyle=1;
+first_cycle=1;

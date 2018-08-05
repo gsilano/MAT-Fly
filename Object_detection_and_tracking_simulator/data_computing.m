@@ -20,7 +20,7 @@
 h_1 = figure;
 time_vector = 1 : 1 : length(error_x_pixel_vect);
 time_vector_2 = 1 : .1 : length(error_x_pixel_vect);
-figure_abscissa = plot(time_vector, error_x_pixel_vett, 'b');
+figure_abscissa = plot(time_vector, error_x_pixel_vect, 'b');
 title('Abscissa error of the centroids distance vector');
 if(abs(max(error_x_pixel_vect)) > abs(min(error_x_pixel_vect)))
     value_axis_abscissa = abs(max(error_x_pixel_vect));
@@ -76,7 +76,7 @@ axis([1 time_vector(1, end) -value_axis_ordinate value_axis_ordinate])
 
 % The area error on the bounding box
 h_5 = figure;
-distance_apparent = error_area_vect/area_reference;  
+distance_apparent = error_area_vect/reference_area;  
 figure_distance = plot(time_vector, distance_apparent, 'b');
 title('Error on the apparent distance');
 if(abs(max(distance_apparent)) > abs(min(distance_apparent)))
@@ -172,7 +172,7 @@ disp('Index performance of the algorithm: ');
 disp(performance_index);
 
 % The obtained results are saved into a MAT-file
-save('performance_index.mat', 'peformance_index');
+save('performance_index.mat', 'performance_index');
 
 %%                                                          VARIOUS PLOTS - ERROR ON THE YAW ANGLE
 
@@ -181,10 +181,10 @@ save('performance_index.mat', 'peformance_index');
 h_10 = figure;
 figure_error_yaw = plot(time_vector, error_angle_yaw_vect, 'b');
 title('Yaw Error');
-if(abs(max(error_angles_yaw_vect)) > abs(min(error_angles_yaw_vect)))
-    value_axis_abscissa = abs(max(error_angles_yaw_vect));
+if(abs(max(error_angle_yaw_vect)) > abs(min(error_angle_yaw_vect)))
+    value_axis_abscissa = abs(max(error_angle_yaw_vect));
 else
-    value_axis_abscissa = abs(min(error_angles_yaw_vect));
+    value_axis_abscissa = abs(min(error_angle_yaw_vect));
 end
 ylabel('Error [rad]');
 xlabel('Frame Number [#]');
@@ -192,12 +192,12 @@ axis([1 time_vector(1, end) -value_axis_abscissa value_axis_abscissa])
 
 % The same information are plotted by using the stem function
 h_11 = figure;
-figure_errore_yaw_stem = stem(time_vector, error_angles_yaw_vect, 'b');
+figure_error_yaw_stem = stem(time_vector, error_angle_yaw_vect, 'b');
 title('Yaw Error');
-if(abs(max(error_angles_yaw_vect)) > abs(min(error_angles_yaw_vect)))
-    value_axis_abscissa = abs(max(error_angles_yaw_vect));
+if(abs(max(error_angle_yaw_vect)) > abs(min(error_angle_yaw_vect)))
+    value_axis_abscissa = abs(max(error_angle_yaw_vect));
 else
-    value_axis_abscissa = abs(min(error_angles_yaw_vect));
+    value_axis_abscissa = abs(min(error_angle_yaw_vect));
 end
 ylabel('Error [rad]');
 xlabel('Frame Number [#]');
@@ -303,7 +303,7 @@ movefile('figure_ordinate.tif', folderName_dataComputing);
 movefile('figure_abscissa.tif', folderName_dataComputing);
 movefile('figure_distance.tif', folderName_dataComputing);
 movefile('figure_drone_follows_auto.tif', folderName_dataComputing);
-movefile('figure_vect_errore.tif', folderName_dataComputing);
+movefile('figure_vect_error.tif', folderName_dataComputing);
 movefile('figure_ordinate_stem.tif', folderName_dataComputing);
 movefile('figure_abscissa_stem.tif', folderName_dataComputing);
 movefile('figure_error_index_stem.tif', folderName_dataComputing);
@@ -339,7 +339,7 @@ movefile('figure_ordinate.fig', folderName_dataComputing);
 movefile('figure_abscissa.fig', folderName_dataComputing);
 movefile('figure_distance.fig', folderName_dataComputing);
 movefile('figure_system.fig', folderName_dataComputing);
-movefile('figure_vect_errore.fig', folderName_dataComputing);
+movefile('figure_vect_error.fig', folderName_dataComputing);
 movefile('figure_ordinate_stem.fig', folderName_dataComputing);
 movefile('figure_abscissa_stem.fig', folderName_dataComputing);
 movefile('figure_error_index_stem.fig', folderName_dataComputing);
@@ -348,9 +348,9 @@ movefile('figure_error_angle_yaw.fig', folderName_dataComputing);
 movefile('figure_error_angle_yaw_stem.fig', folderName_dataComputing);
 movefile('figure_error_angle_pitch.fig', folderName_dataComputing);
 movefile('figure_error_angle_pitch_stem.fig', folderName_dataComputing);
-movefile('figure_posizione_x_drone_auto.fig', folderName_dataComputing);
-movefile('figure_posizione_y_drone_auto.fig', folderName_dataComputing);
-movefile('figure_posizione_z_drone_auto.fig', folderName_dataComputing);
+movefile('figure_position_x_drone_auto.fig', folderName_dataComputing);
+movefile('figure_position_y_drone_auto.fig', folderName_dataComputing);
+movefile('figure_position_z_drone_auto.fig', folderName_dataComputing);
 
 % Close all the plot windows
 close all    

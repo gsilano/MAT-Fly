@@ -19,29 +19,33 @@ close all
 clc
 
 % The file contains the simulation parameters
-simulation_parameters
+simulation_parameters;
 
 % The file contains the controller parameters
-controller_paramters
+controller_parameters;
 
 % The file contains the drone parameters
-drone_paramters
+drone_parameters;
+
+% The variables is employed to select the detection algorithm at first
+% step, while the tracking one is used in the later. 
+first_cycle = 1;
 
 % The simulation loop. The virtual world, the image computing and drone
 % dynamics and control are simulated step by step. The output of the loop
 % is a collection of images: the image captured by an idealized camera on
 % the drone body.
-for l=1:frameNumber
+for l = 1 : frameNumber
     
     % Virtual reality rendering
-    virtual_world
+    virtual_world_script;
     
     % Image computing. In that script is included also the drone control
     % algorithms
-    image_computing
+    image_computing;
         
     % Drone dynamics
-    drone_dynamics
+    drone_dynamics;
     
     
     %%                                                  PARAMTERS FOR THE NEXT SIMULATION STEP
@@ -51,7 +55,7 @@ for l=1:frameNumber
 
     % The simulation time values are updated
     start_time =  stop_time;
-    stop_time = stop_time + step; %+ simulation_time_drone;
+    stop_time = stop_time + simulationStep; %+ simulation_time_drone;
 
     % The variables is turned low
     first_cycle = 0;
@@ -60,7 +64,7 @@ end
 
 
 % Data storing
-data_storing
+data_storing;
 
 % Data computing
-data_computing
+data_computing;

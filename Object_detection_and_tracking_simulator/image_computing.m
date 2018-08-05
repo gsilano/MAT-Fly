@@ -21,48 +21,44 @@
 
 % Each frame is distinguished from the other by using a name, in particular
 % the variable k
-frameName = strcat('screenCaptured_', num2str(k), '.tif');
+acquiredFrameName = strcat('screenCaptured_', num2str(k), '.tif');
 
 % From the matrix extracted by the Simulink scheme is created an image and saved
 % into a suitable file
 imagine_virtual_world = image(:,:,:,end);
-imwrite(imagine_virtual_world, frameName);
+imwrite(imagine_virtual_world, acquiredFrameName);
 
 % The image is moved into a specific folder. If such folder does not exist,
 % it is made
-imageFolder = 'Acquisition';
-if ~(exist(imageFolder, 'dir'))
-  mkdir(imageFolder);
+folderAcquiredImages = 'Acquisition';
+if ~(exist(folderAcquiredImages, 'dir'))
+  mkdir(folderAcquiredImages);
 end
-movefile(frameName, imageFolder);
+movefile(acquiredFrameName, folderAcquiredImages);
 
 % The image is computed in order to detect the target: the car
-detector = vision.CascadeObjectDetector(detectorName);
-
-% The image is read from the file
-posizioneImg = strcat(imageFolder, '\', frameName);
-img = imread(posizioneImg);
+detectorVisionCascade = vision.CascadeObjectDetector(detectorName);
 
 % If it is the first cycle or the car has been partially covered, the
 % detection algorithm is employed with respect to the tracking one
 if(first_cycle)
-    bbox = step(detector,img);
+    bbox = step(detectorVisionCascade, imagine_virtual_world);
 end
 
 % The car is not recognized inside the frame, the drone does not change its
 % position and attitude. Thus, the image computing does not start.
 if(size(bbox,1) > 0)
 
-    if(first_cylce)
+    if(first_cycle)
         % The bounding boxes are added to the image
-        detectedImg = insertObjectAnnotation(img, 'rectangle', bbox, 'carDetected');
+        detectedImg = insertObjectAnnotation(imagine_virtual_world, 'rectangle', bbox, 'carDetected');
 
         % Naming detected frame
         nameFrameDetected = strcat('carDetected_', num2str(k), '.tif');
 
         % The image is saved on file together with the bounding boxes
         imwrite(detectedImg, nameFrameDetected);
-        movefile(nameFrameDetected, imageFolder);
+        movefile(nameFrameDetected, folderAcquiredImages);
 
         % The variables used to search the maximum bounding box are
         % initialized
@@ -88,7 +84,7 @@ if(size(bbox,1) > 0)
         bbox_max = [x_max y_max with_max height_max];
 
         % The CAM Shift tracking algorithm is employed
-        [hueChannel,~,~] = rgb2hsv(img);
+        [hueChannel,~,~] = rgb2hsv(imagine_virtual_world);
         tracker = vision.HistogramBasedTracker;
         initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such number has been found in a empirical way
 
@@ -97,21 +93,21 @@ if(size(bbox,1) > 0)
         % If the detection is not required (the car has been already
         % detected) the tracking algorithm is employed to obtain information
         % about the car
-        [hueChannel,~,~] = rgb2hsv(img);
+        [hueChannel,~,~] = rgb2hsv(imagine_virtual_world);
         bbox_max = step(tracker, hueChannel);
         
     end
 
 
     % The final (maximum) bounding box is added on the image
-    detectedImg_max = insertObjectAnnotation(img, 'rectangle', bbox_max, 'carDetected');
+    detectedImg_max = insertObjectAnnotation(imagine_virtual_world, 'rectangle', bbox_max, 'carDetected');
 
     % Naming the computed frame
     nameFrameDetected_max = strcat('carDetectedMax_', num2str(k), '.tif');
 
     % The frame is saved on a file
     imwrite(detectedImg_max, nameFrameDetected_max);
-    movefile(nameFrameDetected_max, imageFolder);
+    movefile(nameFrameDetected_max, folderAcquiredImages);
 
     % The frames produced during the tracking algorithm procedure are also
     % saved
@@ -119,7 +115,7 @@ if(size(bbox,1) > 0)
 
     % The image in HSV space is also saved
     imwrite(hueChannel, nameFrameDetected_hueChannel);
-    movefile(nameFrameDetected_hueChannel, imageFolder);
+    movefile(nameFrameDetected_hueChannel, folderAcquiredImages);
 
     %%                                                                  DATA EXTRACTION
 
@@ -186,13 +182,13 @@ if(size(bbox,1) > 0)
     imwrite([X,map], nameFrameVector);
     savefig(figure_1, nameFigureVector);
     close all
-    movefile(nameFrameVector, imageFolder);
+    movefile(nameFrameVector, folderAcquiredImages);
     movefile(nameFigureVector, figureFolder);
 
 
 %%                                                                  DRONE CONTROL
 
     % Matlab script in which the drone control algorithms are reported
-    drone_control
+    drone_control;
     
 end

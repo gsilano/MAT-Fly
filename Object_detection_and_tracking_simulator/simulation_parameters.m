@@ -24,7 +24,7 @@ k = 1;
 load('esp_on.mat');
 
 % The name of the detector employed for the simulation
-detector = 'carDetector_virtual_world_Haar.xml';
+detectorName = 'carDetector_virtual_world_Haar.xml';
 
 % The initial drone (camera) position expressed in the [xyz] reference
 % system
@@ -32,16 +32,28 @@ y_next = 4; % [m]
 x_next = 15; % [m]
 z_next = 0; % [m]
 
+% The position initial values. Such values are referred to the MathWorks VR
+% reference system
+y_initial = y_next; % [m]
+x_initial = x_next; % [m]
+z_initial = z_next; % [m]
+
 % The initial drone attitude expressed in the [xyz] reference system
 yaw_initial = 0; % [rad]
 pitch_initial = 0; % [rad] 
 roll_initial = 0; % [rad]
 
+% The angles values are exchanged to take into account the different
+% reference system 
+roll_virtual = pitch_initial;
+pitch_virtual = yaw_initial;
+yaw_virtual = roll_initial;
+
 % Simulink parameters
 end_time = 33;                      % The end time of the simulation [s]
-step = 0.05;                        % Sampling time [s]
+simulationStep = 0.05;                        % Sampling time [s]
 start_time = 0;                     % Start time of the simulation [s]
-stop_time = start_time + step;      % Stop time of the simulation [s]
+stop_time = start_time + simulationStep;      % Stop time of the simulation [s]
 
 % The stop time will be updated every step. The reason is quite simple:
 % Simulink does not allow to handle the image computation directly into the 

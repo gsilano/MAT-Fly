@@ -46,27 +46,27 @@ nameMatFilePositionDrone = 'positionDrone.mat';
 nameMatFileAttitudeDrone = 'attitudeDrone.mat';
 
 % Mat-files storing
-save(nameMatFileVariousInformation, 'simulation_time', 'step', 'reference_area', 'radius', 'g', 'm', 'l', 'd', 'b', 'Jr', 'Iz', 'Iy', 'Ix', ...
+save(nameMatFileVariousInformation, 'end_time', 'simulationStep', 'reference_area', 'radius', 'g', 'm', 'l', 'd', 'b', 'Jr', 'Iz', 'Iy', 'Ix', ...
     'kpz', 'kdz', 'kpps', 'kdps', 'kpt', 'kdt', 'kpp', 'kdp', 'C_12', 'C_11', 'C_10', 'C_9', 'lambda_6', 'lambda_5', 'k_z_d', 'k_y_i', 'k_z_i', ...
     'k_area_i', 'k_y_p', 'k_z_p', 'k_area_p', 'k_yaw_i', 'k_pitch_i', 'k_yaw_p', 'k_pitch_p', 'w_im', 'h_im');
-save(nameMatFileErrorXPixel, 'error_x_pixel_vett');
-save(nameMatFileErrorYPixel, 'error_y_pixel_vett');
-save(nameMatFileErrorAreaPixel , 'error_area_vett');
-save(nameMatFileErrorAngleYawReferenceGenerator , 'error_angolo_yaw_vett');
-save(nameMatFileErrorAnglePitchReferenceGenerator , 'error_angolo_pitch_vett');
+save(nameMatFileErrorXPixel, 'error_x_pixel_vect');
+save(nameMatFileErrorYPixel, 'error_y_pixel_vect');
+save(nameMatFileErrorAreaPixel , 'error_area_vect');
+save(nameMatFileErrorAngleYawReferenceGenerator , 'error_angle_yaw_vect');
+save(nameMatFileErrorAnglePitchReferenceGenerator , 'error_angle_pitch_vect');
 save(nameMatFileChi_6 , 'chi_6_pre_vect');
 save(nameMatFileChi_5 , 'chi_5_pre_vect');
-save(nameMatFilePsi_dot , 'psi_dot_prec_vect');
-save(nameMatFilePhi_dot , 'phi_dot_prec_vect');
+save(nameMatFilePsi_dot , 'psi_dot_pre_vect');
+save(nameMatFilePhi_dot , 'phi_dot_pre_vect');
 save(nameMatFileTheta_dot , 'theta_dot_pre_vect');
 save(nameMatFileX_dot , 'x_dot_pre_vect');
 save(nameMatFileY_dot , 'y_dot_pre_vect');
 save(nameMatFileZ_dot , 'z_dot_pre_vect');
-save(nameMatFileObserverPositionReferenceGenerator , 'observer_position_reference_generator_vett');
-save(nameMatFileObserverOrientationReferenceGenerator , 'observer_orientation_reference_generator_vett');
+save(nameMatFileObserverPositionReferenceGenerator , 'observer_position_reference_generator_vect');
+save(nameMatFileObserverOrientationReferenceGenerator , 'observer_orientation_reference_generator_vect');
 save(nameMatFilePositionAuto , 'position_auto'); 
-save(nameMatFileAttitudeDrone , 'position_drone');
-save(nameMatFileAttitudeDrone, 'attitude_drone');
+save(nameMatFilePositionDrone , 'position_drone');
+save(nameMatFileAttitudeDrone, 'orientation_drone');
 
 % Moving the files into the folder
 movefile(nameMatFileVariousInformation, folderMatFile);
