@@ -42,8 +42,46 @@ R_x = [       1               0                     0;
 
 rotation_matrix = R_z * R_y * R_x;
 
-% The Simulink scheme is run for one step
-mdl = 'virtual_world';
+% The switch allows to select the right scenario and its set up
+switch option
+    case 1
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_first_scenario';
+    case 2
+        distanceAmongCars = [0 0 0];
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_first_scenario_modified_1';
+    case 3
+        distanceAmongCars = [5 0 0];
+        colorSecondCar = [255 0 0]; %red
+        colorFirstCar = [0.88 0.95 0.0]; %froggy yellow
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_first_scenario_modified_1';
+    case 4
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_second_scenario';
+    case 5
+        colorFirstCar = [255 0 0]; %red
+        colorSecondCar = [0.88 0.95 0.0]; %froggy yellow
+        distanceAmongCars = [5 0 0];
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_first_scenario_modified_1';
+    case 6
+        colorFirstCar = [255 0 0]; %red
+        colorSecondCar = [0.88 0.95 0.0]; %froggy yellow
+        distanceAmongCars = [0.25 0 -2];
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_first_scenario_modified_1';
+    case 7
+        colorFirstCar = [255 0 0]; %red
+        colorSecondCar = [0.88 0.95 0.0]; %froggy yellow
+        distanceAmongCars = [0 0 2];
+        % The Simulink scheme is run for one step
+        mdl = 'virtual_world_first_scenario_modified_1';
+    otherwise
+        disp('The chosen option is not valid.')
+end
+
 load_system(mdl);
 sim(mdl);
 

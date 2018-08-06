@@ -20,11 +20,51 @@
 % initialized and set equal to one
 k = 1;
 
-% The mat file contains the car dynamics
-load('esp_on.mat');
-
-% The name of the detector employed for the simulation
-detectorName = 'carDetector_virtual_world_Haar.xml';
+% The switch allows to select the right scenario and its set up
+switch option
+    case 1
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_first_scenario.xml';
+        % The mat file contains the car dynamics
+        load('esp_on.mat');
+    case 2
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_first_scenario.xml';
+        % The mat file contains the car dynamics
+        load('esp_on.mat');    
+        load('esp_off.mat');  
+    case 3
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_first_scenario.xml';
+        % The mat file contains the car dynamics
+        load('esp_on');    
+        load('esp_off.mat'); 
+    case 4
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_second_scenario.xml';
+        % The mat file contains the car dynamics
+        load('test_lap.mat');
+    case 5
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_first_scenario.xml';
+        % The mat file contains the car dynamics
+        load('esp_on');    
+        load('esp_off.mat'); 
+    case 6
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_first_scenario.xml';
+        % The mat file contains the car dynamics
+        load('esp_on');    
+        load('esp_off.mat');
+    case 7
+        % The name of the detector employed for the simulation
+        detectorName = 'carDetector_virtual_world_Haar_first_scenario.xml';
+        % The mat file contains the car dynamics
+        load('esp_on');    
+        load('esp_off.mat');
+    otherwise
+        disp('The chosen option is not valid.')
+end
 
 % The initial drone (camera) position expressed in the [xyz] reference
 % system

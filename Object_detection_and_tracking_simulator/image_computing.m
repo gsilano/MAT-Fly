@@ -86,8 +86,27 @@ if(size(bbox,1) > 0)
         % The CAM Shift tracking algorithm is employed
         [hueChannel,~,~] = rgb2hsv(imagine_virtual_world);
         tracker = vision.HistogramBasedTracker;
-        initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such number has been found in a empirical way
-
+        
+        % The switch allows to select the right scenario and its set up
+        switch option
+            case 1
+                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            case 2
+                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            case 3
+                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            case 4
+                initializeObject(tracker, hueChannel, [x_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            case 5
+                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            case 6
+                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            case 7
+                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+            otherwise
+                disp('The chosen option is not valid.')
+        end
+        
     else
 
         % If the detection is not required (the car has been already

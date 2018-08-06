@@ -18,6 +18,20 @@ clear all
 close all
 clc
 
+% The code reported below allows to choose the scenario will be simulated
+disp('Which scenario are you interested in?');
+disp('');
+disp('Below the options are reported'); 
+disp('    (1) The drone follows a car along a non trivial path ("vr_octavia_2cars" scenario)'); 
+disp('    (2) The drone follows the red car overlappe the yellow one ("vr_octavia_2cars" scenario)'); 
+disp('    (3) The drone follows the yellow car in front of the car one ("vr_octavia_2cars" scenario)'); 
+disp('    (4) The drone follows a car along a non trivial path ("vr_octavia" scenario)');
+disp('    (5) The drone follows the red car in front of the yellow one ("vr_octavia_2cars" scenario)'); 
+disp('    (6) The drone follows the red car to the right of of the yellow one ("vr_octavia_2cars" scenario)'); 
+disp('    (7) The drone follows the red car to the left of of the yellow one ("vr_octavia_2cars" scenario)'); 
+
+option = input('');
+
 % The file contains the simulation parameters
 simulation_parameters;
 
@@ -58,7 +72,9 @@ for l = 1 : frameNumber
     stop_time = stop_time + simulationStep; %+ simulation_time_drone;
 
     % The variables is turned low
-    first_cycle = 0;
+    if(first_cycle && size(bbox,1) > 0)
+        first_cycle = 0;
+    end
    
 end
 

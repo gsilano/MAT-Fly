@@ -1,0 +1,147 @@
+#VRML V2.0 utf8
+
+EXTERNPROTO Octavia [
+  exposedField SFVec3f Body_Scale
+  exposedField SFColor Car_SpecularColor
+  exposedField SFColor Car_DiffuseColor
+  exposedField SFVec3f Force4_Scale
+  exposedField SFVec3f Force3_Scale
+  exposedField SFVec3f Force2_Scale
+  exposedField SFVec3f Force1_Scale
+  exposedField SFInt32 Forces_Switch
+  exposedField SFInt32 Backlights_Switch
+  exposedField SFRotation SteeringWheel1_Rotation
+  exposedField SFRotation WheelRR_Spin_Rotation
+  exposedField SFVec3f WheelRR_Translation
+  exposedField SFRotation WheelRR_Rotation
+  exposedField SFRotation WheelRL_Spin_Rotation
+  exposedField SFVec3f WheelRL_Translation
+  exposedField SFRotation WheelRL_Rotation
+  exposedField SFRotation WheelFR_Spin_Rotation
+  exposedField SFVec3f WheelFR_Translation
+  exposedField SFRotation WheelFR_Rotation
+  exposedField SFRotation WheelFL_Spin_Rotation
+  exposedField SFVec3f WheelFL_Translation
+  exposedField SFRotation WheelFL_Rotation
+  exposedField SFRotation Car_Rotation
+  exposedField SFVec3f Car_Position
+]
+"octavia_protos.wrl#Octavia" 
+
+WorldInfo {
+  title "Vehicle Dynamics Visualization - Multiple Vehicles"
+  info [
+    "Vehicles implemented as EXTERNPROTOs to allow easy instantiation of several vehicles." 
+    "Skoda Octavia model copyright Skoda Auto, courtesy of Ismar VR, Czech Republic." 
+    "Copyright 1998-2013 HUMUSOFT s.r.o. and The MathWorks, Inc." 
+  ]
+}
+NavigationInfo {
+  visibilityLimit 1000
+  headlight FALSE
+  avatarSize [0.1, 1, 1]
+}
+Background {
+  skyColor [
+    0.76238 0.8 0.1427,
+    0.277798 0.219779 0.7,
+    0.222549 0.390234 0.7,
+    0.60094 0.662637 0.69 
+  ]
+  skyAngle [0.1, 1.2, 1.57]
+  groundColor [
+    0 0.8 0,
+    0.174249 0.82 0.187362,
+    0.467223 0.82 0.445801,
+    0.621997 0.67 0.600279 
+  ]
+  groundAngle [0.9, 1.5, 1.57]
+}
+DirectionalLight {
+  intensity 0.7
+  direction -1 -1 -1
+}
+DirectionalLight {
+  intensity 0.6
+  direction 0 0 1
+}
+DirectionalLight {
+  intensity 0.7
+  direction 1 -1 -1
+}
+DEF Car_1 Octavia {
+  Car_DiffuseColor 0.88 0.95 0
+  Force4_Scale -0.00919829 0.650611 -0.240833
+  Force3_Scale -0.105831 0.625096 0.323818
+  Force2_Scale 0.0149621 0.911027 0.201486
+  Force1_Scale 0.0778232 0.907086 -0.157568
+  SteeringWheel1_Rotation 0 1 0 -0.00256811
+  WheelRR_Spin_Rotation 0 0 1 0.018217
+  WheelRR_Translation -2.56956 -0.0174994 0.699431
+  WheelRR_Rotation -0.258354 -0.00276478 -0.965216 0.0393408
+  WheelRL_Spin_Rotation 0 0 1 0.0202834
+  WheelRL_Translation -2.56948 -0.0190818 -0.699408
+  WheelRL_Rotation 0.258338 0.00276462 -0.965159 0.0429035
+  WheelFR_Spin_Rotation 0 0 1 -0.0148912
+  WheelFR_Translation -0.000535552 0.0118496 0.702459
+  WheelFR_Rotation 0.683911 -0.0611535 -0.72405 0.0068317
+  WheelFL_Spin_Rotation 0 0 1 -0.010875
+  WheelFL_Translation -0.000513186 0.011973 -0.702443
+  WheelFL_Rotation -0.695935 0.0106286 -0.716033 0.0068588
+  Car_Rotation 0.117545 -0.0194666 -0.992466 0.0161151
+  Car_Position -0.00148154 0.27635 0.000714693
+}
+DEF Car_2 Octavia {
+  Body_Scale 1.01 1.01 1.01
+  Car_DiffuseColor 1 0 0
+  Force4_Scale -0.00998938 0.650369 -0.247839
+  Force3_Scale -0.108191 0.625011 0.329321
+  Force2_Scale 0.0149701 0.910932 0.201197
+  Force1_Scale 0.0784751 0.907136 -0.157867
+  Forces_Switch -1
+  SteeringWheel1_Rotation 0 1 0 -0.00237313
+  WheelRR_Spin_Rotation 0 0 1 0.0182518
+  WheelRR_Translation -2.56956 -0.0174906 0.699432
+  WheelRR_Rotation -0.258352 -0.00276477 -0.96521 0.0393213
+  WheelRL_Spin_Rotation 0 0 1 0.0201994
+  WheelRL_Translation -2.56949 -0.0190681 -0.699408
+  WheelRL_Rotation 0.258333 0.00276457 -0.965141 0.0428734
+  WheelFR_Spin_Rotation 0 0 1 -0.0148241
+  WheelFR_Translation -0.000534254 0.0118429 0.702458
+  WheelFR_Rotation 0.685536 -0.0594724 -0.724986 0.00681466
+  WheelFL_Spin_Rotation 0 0 1 -0.0108389
+  WheelFL_Translation -0.000514131 0.0119714 -0.702443
+  WheelFL_Rotation -0.696414 0.0124949 -0.717289 0.00685032
+  Car_Rotation 0.117201 -0.0188106 -0.992396 0.0161114
+  Car_Position -0.0014694 0.276355 0.000711661
+}
+DEF FlyingCamera Viewpoint {
+  description "External observer: drone"
+  position 0 2 10
+}
+USE FlyingCamera
+# Road
+DEF RoadSystem Transform {
+  children Inline {
+    url "octavia_road_flat.wrl" 
+  }
+}
+# Surrounding objects dependent on manoeuvre settings (cones...)
+DEF Surrounding_Objects Transform {
+  children Inline {
+    url "octavia_lchg_cones.wrl" 
+  }
+}
+DEF Startline Transform {
+  children Shape {
+    appearance Appearance {
+      material Material {
+        emissiveColor 1 1 1
+        diffuseColor 1 1 1
+      }
+    }
+    geometry Box {
+      size 0.1 0.04 8
+    }
+  }
+}

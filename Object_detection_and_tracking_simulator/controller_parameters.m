@@ -24,6 +24,10 @@ radius = 15;                            % Distance used to compute the reference
 w_im = 600; %Width [px] 
 h_im = 800; % Height [px]
 
+% The reference generator control ouputs are initialized
+yaw_regulator = 0;
+pitch_regulator = 0;
+
 % Attitude previous values (k-1 step)
 yaw_regulator_pre = yaw_initial;                   % Previous step
 pitch_regulator_pre = pitch_initial;               % Previous step
@@ -84,6 +88,8 @@ integral_action_y = 0;
 % trying to understand what it happens when it is different respect to now.
 angle_yaw_reference = yaw_initial;      
 angle_pitch_reference =  pitch_initial;
+
+
 
 %%                                                      INITIAL CONDITION CONTROLLER VARIABLES
 
