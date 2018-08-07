@@ -69,7 +69,7 @@ switch option
     case 6
         colorFirstCar = [255 0 0]; %red
         colorSecondCar = [0.88 0.95 0.0]; %froggy yellow
-        distanceAmongCars = [0.25 0 -2];
+        distanceAmongCars = [0.5 0 -2.5];
         % The Simulink scheme is run for one step
         mdl = 'virtual_world_first_scenario_modified_1';
     case 7

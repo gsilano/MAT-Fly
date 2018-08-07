@@ -62,17 +62,17 @@ if(size(bbox,1) > 0)
 
         % The variables used to search the maximum bounding box are
         % initialized
-        with_max = 0;
+        width_max = 0;
         height_max = 0;
 
         % The maximum bounding box is found by using such for cycle
         for i = 1 : size(bbox,1)
 
-            if(with_max < bbox(i,3) && height_max < bbox(i,4))
+            if(width_max < bbox(i,3) && height_max < bbox(i,4))
 
                 x_max = bbox(i,1);
                 y_max = bbox(i,2);
-                with_max = bbox(i,3);
+                width_max = bbox(i,3);
                 height_max = bbox(i,4);
 
             end
@@ -81,7 +81,7 @@ if(size(bbox,1) > 0)
 
         % The information related to the maximum bounding boxes size are
         % put into a vector
-        bbox_max = [x_max y_max with_max height_max];
+        bbox_max = [x_max y_max width_max height_max];
 
         % The CAM Shift tracking algorithm is employed
         [hueChannel,~,~] = rgb2hsv(imagine_virtual_world);
@@ -90,19 +90,19 @@ if(size(bbox,1) > 0)
         % The switch allows to select the right scenario and its set up
         switch option
             case 1
-                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+                initializeObject(tracker, hueChannel, [x_max+width_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
             case 2
-                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+                initializeObject(tracker, hueChannel, [x_max+width_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
             case 3
-                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+                initializeObject(tracker, hueChannel, [x_max+width_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
             case 4
                 initializeObject(tracker, hueChannel, [x_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
             case 5
-                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+                initializeObject(tracker, hueChannel, [x_max+width_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
             case 6
-                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+                initializeObject(tracker, hueChannel, [round(x_max+(width_max/2)) round(y_max+(height_max/2)) 27 19]); % Such numbers have been found in a empirical way
             case 7
-                initializeObject(tracker, hueChannel, [x_max+with_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
+                initializeObject(tracker, hueChannel, [x_max+width_max y_max+height_max/2 54 38]); % Such numbers have been found in a empirical way
             otherwise
                 disp('The chosen option is not valid.')
         end
