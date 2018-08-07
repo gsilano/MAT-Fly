@@ -31,4 +31,4 @@ month={Sept}
 
 In such section a video providing the effectiveness of the platform is reported. Further videos are reported in the paper mentioned before. They can be found in the related YouTube channel. Have fun! :)
 
-[![MAT-Fly YouTube video. Drone follows the car along a non trivial scenario.](https://github.com/gsilano/MAT-Fly/wiki/images/Miniature_YouTube_JIRS.png)]( "MAT-Fly, YouTube video. Drone follows the car along a non trivial scenario.")
+[![MAT-Fly YouTube video. Drone follows the car along a non trivial scenario.](https://github.com/gsilano/MAT-Fly/wiki/images/Miniature_MAT-Fly.png)](https://youtu.be/b8mTHRkRDmA "MAT-Fly, YouTube video. Drone follows the car along a non trivial scenario.")
