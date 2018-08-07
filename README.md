@@ -17,8 +17,8 @@ If you are using the simulator within the research for your publication, please 
 @INPROCEEDINGS{Silano2016, 
 author={G. Silano and L. Iannelli}, 
 booktitle={2016 IEEE Conference on Control Applications (CCA)}, 
-title={An educational simulation platform for GPS-denied unmanned Aerial 
-Vehicles aimed to the detection and tracking of moving objects}, 
+title={An educational simulation platform for GPS-denied unmanned Aerial Vehicles aimed to the detection
+        and tracking of moving objects}, 
 year={2016},
 pages={1018-1023},  
 month={Sept}
