@@ -42,7 +42,13 @@ A menu allows to choose the simulation you are interested in:
 ```
 
 By selecting the option 1, 2, 3, etc., the simulator will start. Screenshots captured from the 3D virtual reality environment will be available into the ```Acquisition``` folder, created at runtime.
- 
+
+To facilitate the use of platform, an offline dataset was created. It allows to synthesize the classifier, to test the script for the automatic selection of the ROI (Region Of Interest), etc., avoiding to pass through the data acquisition (frames captured from the virtual environment by describing a spiral trajectory around the car). Below are you find the links to downlad these data:
+
+* [Images_cropped](https://mega.nz/#!psdBhSqC!SSIVPsrEstTuze0cYI9ZETBcC2nevCjySeRerE_S9lg);
+* [Negative_images](https://mega.nz/#!IoFDmChY!UgtC4ml__xQrLv2i7jiqCUIzD8KPZ2-KRhhtgrcV3Tw);
+* [Positive_images](https://mega.nz/#!89cziS7B!s9DNYg004tl-N-Za2QzP8a-y-IsIozWXBiGH5hxy_dE).
+
 # YouTube videos
 
 In such section a video providing the effectiveness of the platform is reported. Further videos are reported in the paper mentioned before. They can be found in the related YouTube channel. Have fun! :)
