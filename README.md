@@ -26,6 +26,22 @@ month={Sept}
  ```
  
 # Basic Usage
+
+Starting the simulation is quite simple as well as customizing it. Simply run the MATLAB ```main``` script in the repository ```Object_detection_and_tracking_simulator```.
+
+A menu allows to choose the simulation you are interested in:
+
+```
+(1) The drone follows a car along a non trivial path ("vr_octavia_2cars" scenario)
+(2) The drone follows the red car overlapped the yellow one ("vr_octavia_2cars" scenario)
+(3) The drone follows the yellow car in front of the car one ("vr_octavia_2cars" scenario) 
+(4) The drone follows a car along a non trivial path ("vr_octavia" scenario)
+(5) The drone follows the red car in front of the yellow one ("vr_octavia_2cars" scenario) 
+(6) The drone follows the red car to the right of of the yellow one ("vr_octavia_2cars" scenario) 
+(7) The drone follows the red car to the left of of the yellow one ("vr_octavia_2cars" scenario) 
+```
+
+By selecting the option 1, 2, 3, etc., the simulator will start. Screenshots captured from the 3D virtual reality environment will be available into the ```Acquisition``` folder, created at runtime.
  
 # YouTube videos
 
