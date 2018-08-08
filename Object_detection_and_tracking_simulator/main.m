@@ -23,7 +23,7 @@ disp('Which scenario are you interested in?');
 disp('');
 disp('Below the options are reported'); 
 disp('    (1) The drone follows a car along a non trivial path ("vr_octavia_2cars" scenario)'); 
-disp('    (2) The drone follows the red car overlappe the yellow one ("vr_octavia_2cars" scenario)'); 
+disp('    (2) The drone follows the red car overlapped the yellow one ("vr_octavia_2cars" scenario)'); 
 disp('    (3) The drone follows the yellow car in front of the car one ("vr_octavia_2cars" scenario)'); 
 disp('    (4) The drone follows a car along a non trivial path ("vr_octavia" scenario)');
 disp('    (5) The drone follows the red car in front of the yellow one ("vr_octavia_2cars" scenario)'); 
