@@ -33,7 +33,7 @@ A menu allows to choose the simulation you are interested in:
 
 ```
 (1) The drone follows a car along a non trivial path ("vr_octavia_2cars" scenario)
-(2) The drone follows the red car overlapped the yellow one ("vr_octavia_2cars" scenario)
+(2) The drone follows the red car superimposed on yellow one ("vr_octavia_2cars" scenario)
 (3) The drone follows the yellow car in front of the car one ("vr_octavia_2cars" scenario) 
 (4) The drone follows a car along a non trivial path ("vr_octavia" scenario)
 (5) The drone follows the red car in front of the yellow one ("vr_octavia_2cars" scenario) 
