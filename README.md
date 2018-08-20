@@ -17,8 +17,8 @@ If you are using the simulator within the research for your publication, please 
 @INPROCEEDINGS{Silano2016, 
 author={G. Silano and L. Iannelli}, 
 booktitle={2016 IEEE Conference on Control Applications (CCA)}, 
-title={An educational simulation platform for GPS-denied unmanned Aerial Vehicles aimed to the detection
-        and tracking of moving objects}, 
+title={An educational simulation platform for GPS-denied unmanned Aerial Vehicles aimed to the detection and
+        tracking of moving objects}, 
 year={2016},
 pages={1018-1023},  
 month={Sept}
@@ -43,7 +43,7 @@ A menu allows to choose the simulation you are interested in:
 
 By selecting the option 1, 2, 3, etc., the simulator will start. Screenshots captured from the 3D virtual reality environment will be available into the ```Acquisition``` folder, created at runtime.
 
-To facilitate the use of platform, an offline dataset was created. It allows to synthesize the classifier, to test the script for the automatic selection of the ROI (Region Of Interest), etc., avoiding to pass through the data acquisition (frames captured from the virtual environment by describing a spiral trajectory around the car). Below are you find the links to downlad these data:
+To facilitate the use of platform, an offline dataset was created. It allows to synthesize the classifier, to test the script for the automatic selection of the ROI (Region Of Interest), etc., avoiding to pass through the data acquisition (frames captured from the virtual environment by describing a spiral trajectory around the car). Below you find the links to downlad these data:
 
 * [Images_cropped](https://mega.nz/#!psdBhSqC!SSIVPsrEstTuze0cYI9ZETBcC2nevCjySeRerE_S9lg);
 * [Negative_images](https://mega.nz/#!IoFDmChY!UgtC4ml__xQrLv2i7jiqCUIzD8KPZ2-KRhhtgrcV3Tw);
