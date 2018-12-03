@@ -3,7 +3,7 @@
 # MAT-Fly
 MAT-Fly provides an easy to use virtual reality environment based on the MathWorks Virtual Reality (VR) Toolbox aimed to simulate flying platforms together with detection and tracking algorithms.
 
-The main motiviation of this work is to propose the simulation-in-the-loop approach for educational purposes within the UAV field. The MathWorks VR Toolbox is employed to simulate the behavior of a drone in a 3D environment when detection, tracking and control algorithms are run. Matlab VR has been chosen due to the familiarity that students have with. In this way the attention can be moved to the classifier, the tracker, the references generator and the trajectory tracking control. The overall architecture is quite modular so that each block can be easily replaced with others thus simplifying the development phase. A simple case study is described below in order to show the effectiveness of the approach.
+The main motivation of this work is to propose the simulation-in-the-loop approach for educational purposes within the UAV field. The MathWorks VR Toolbox is employed to simulate the behavior of a drone in a 3D environment when detection, tracking and control algorithms are run. Matlab VR has been chosen due to the familiarity that students have with. In this way the attention can be moved to the classifier, the tracker, the references generator and the trajectory tracking control. The overall architecture is quite modular so that each block can be easily replaced with others thus simplifying the development phase. A simple case study is described below in order to show the effectiveness of the approach.
 
 The code is released under Apache license, thus making it available for scientific and educational activities.
 
