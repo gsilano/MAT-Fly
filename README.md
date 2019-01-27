@@ -37,6 +37,10 @@ To facilitate the use of platform, an offline dataset was created. It allows to 
 * [Negative_images](https://mega.nz/#!IoFDmChY!UgtC4ml__xQrLv2i7jiqCUIzD8KPZ2-KRhhtgrcV3Tw);
 * [Positive_images](https://mega.nz/#!89cziS7B!s9DNYg004tl-N-Za2QzP8a-y-IsIozWXBiGH5hxy_dE).
 
+# Bugs & Feature Requests
+
+Please report bugs and request features by using the [Issue Tracker](https://github.com/gsilano/MAT-Fly/issues). Furthermore, please see the [Contributing.md](https://github.com/gsilano/MAT-Fly/blob/master/CONTRIBUTING.md) file if you plan to help us to improve MAT-Fly features.
+
 # YouTube videos
 
 In such section a video providing in a direct way the effectiveness of the platform is reported. Further videos are reported in the papers related to the repository and in the related YouTube channel. Have fun! :)
