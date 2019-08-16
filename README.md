@@ -43,7 +43,7 @@ To facilitate the use of platform, an offline dataset was created. It allows to 
 
 Please report bugs and request features by using the [Issue Tracker](https://github.com/gsilano/MAT-Fly/issues). Furthermore, please see the [Contributing.md](https://github.com/gsilano/MAT-Fly/blob/master/CONTRIBUTING.md) file if you plan to help us to improve MAT-Fly features.
 
-# YouTube videos
+# YouTube video
 
 In such section a video providing in a direct way the effectiveness of the platform is reported. Further videos are reported in the papers related to the repository and in the related YouTube channel. Have fun! :)
 
