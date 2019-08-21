@@ -3,17 +3,17 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
 # MAT-Fly
-MAT-Fly provides an easy to use virtual reality environment based on the MathWorks Virtual Reality (VR) Toolbox aimed to simulate flying platforms together with detection and tracking algorithms.
+MAT-Fly is a numerical simulation platform for multi-rotor aircraft characterized by the ease of use and control development. The platform is based on MAtlab and the MathWorks Virtual Reality (VR) Toolboxthat that work together to simulate the behavior of a drone in a 3D environment while tracking a car that moves along a non trivial path.
 
-The main motivation of this work is to propose the simulation-in-the-loop (SITL) approach for educational purposes within the UAV field. The MathWorks VR Toolbox is employed to simulate the behavior of a drone in a 3D environment when detection, tracking, and control algorithms are run. Matlab VR has been chosen due to the familiarity that students have with. In this way, the attention can be moved to the classifier, the tracker, the references generator and the trajectory tracking control. Moreover, the overall architecture is quite modular so that each block can be easily replaced with others thus simplifying the development phase. A simple case study is described below in order to show the effectiveness of the proposed approach.
+The VR toolbox has been chosen due to the familiarity that students have with Matlab and because it allows to move the attention to the classifier, the tracker, the reference generator and the trajectory tracking control thanks to its simple structure. The overall architecture is quite modular so that each block can be easily replaced with others by simplifying the development phase and by allowing to add even more functionalities.
 
 The code is released under Apache license, thus making it available for scientific and educational activities.
 
-The platform has been developed by using the 2015b release of MATLAB but it is compatible with any successive MATLAB release. The Computer Vision System Toolbox is needed to run both Simulink schemes and Matlab scripts.
+The platform has been developed by using the 2015b release of MATLAB but it is compatible with any successive MATLAB release. For running the Simulink schemes and Matlab scripts, the Computer Vision System Toolbox is needed.
 
 Below we provide the instructions necessary for getting started. 
 
-If you are using the simulator within the research for your publication, please take a look at the [Publications](https://github.com/gsilano/MAT-Fly/wiki/Publications) page. An extension work is under review. When it will be available, further references will be reported below.
+If you are using the simulator within the research for your publication, please take a look at the [Publications](https://github.com/gsilano/MAT-Fly/wiki/Publications) page. Currently, an extension work is under review. It will be available as soon as it is ready.
  
 # Basic Usage
 
@@ -31,9 +31,9 @@ A menu allows to choose the simulation you are interested in:
 (7) The drone follows the red car to the left of of the yellow one ("vr_octavia_2cars" scenario) 
 ```
 
-By selecting the option 1, 2, 3, etc., the simulator will start. Screenshots captured from the 3D virtual reality environment will be available into the ```Acquisition``` folder, created at runtime.
+By selecting the option 1, 2, 3, etc., the simulator will start. Screenshots captured from the 3D simulation scenario will be made available into the ```Acquisition``` folder (it is created at runtime if not yet available).
 
-To facilitate the use of platform, an offline dataset was created. It allows to synthesize the classifier, to test the script for the automatic selection of the ROI (Region Of Interest), etc., avoiding to pass through the data acquisition (frames captured from the virtual environment by describing a spiral trajectory around the car). Below you find the links to downlad these data:
+With the aim of making easy the reuse of the proposed software platform, an offline dataset has been created and made available (links are reported below). The dataset allows quickly to design the classifier and the flight control system, to check the perfomance of the MATLAB script designed for automatically recognized the target ROIs (Region Of Interests) within the frames, etc..
 
 * [Images_cropped](https://mega.nz/#!psdBhSqC!SSIVPsrEstTuze0cYI9ZETBcC2nevCjySeRerE_S9lg);
 * [Negative_images](https://mega.nz/#!IoFDmChY!UgtC4ml__xQrLv2i7jiqCUIzD8KPZ2-KRhhtgrcV3Tw);
@@ -41,10 +41,10 @@ To facilitate the use of platform, an offline dataset was created. It allows to 
 
 # Bugs & Feature Requests
 
-Please report bugs and request features by using the [Issue Tracker](https://github.com/gsilano/MAT-Fly/issues). Furthermore, please see the [Contributing.md](https://github.com/gsilano/MAT-Fly/blob/master/CONTRIBUTING.md) file if you plan to help us to improve MAT-Fly features.
+Please report bugs and request features by using the [Issue Tracker](https://github.com/gsilano/MAT-Fly/issues). Furthermore, please see the [Contributing.md](https://github.com/gsilano/MAT-Fly/blob/master/CONTRIBUTING.md) file if you plan to help us improve the features of MAT-Fly.
 
 # YouTube video
 
-In such section a video providing in a direct way the effectiveness of the platform is reported. Further videos are reported in the papers related to the repository and in the related YouTube channel. Have fun! :)
+In this section, a video provides in a direct way the effectiveness of the proposed platform. Links to other videos are available in the related papers and on the YouTube channel. Enjoy! :)
 
 [![MAT-Fly YouTube video. Drone follows the car along a non trivial scenario.](https://github.com/gsilano/MAT-Fly/wiki/images/Miniature_MAT-Fly.png)](https://youtu.be/b8mTHRkRDmA "MAT-Fly, YouTube video. Drone follows the car along a non trivial scenario.")
