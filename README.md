@@ -3,23 +3,21 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
 # MAT-Fly
-MAT-Fly is a numerical simulation platform for multi-rotor aircraft characterized by the ease of use and control development. The platform is based on MAtlab and the MathWorks Virtual Reality (VR) Toolboxthat that work together to simulate the behavior of a drone in a 3D environment while tracking a car that moves along a non trivial path.
+MAT-Fly is a numerical simulation platform for multi-rotor aircraft characterized by the ease of use and control development. The platform is based on MATLAB and the MathWorks Virtual Reality (VR) Toolbox that work together to simulate the behavior of a drone in a 3D environment while tracking a car that moves along a non trivial path.
 
-The VR toolbox has been chosen due to the familiarity that students have with Matlab and because it allows to move the attention to the classifier, the tracker, the reference generator and the trajectory tracking control thanks to its simple structure. The overall architecture is quite modular so that each block can be easily replaced with others by simplifying the development phase and by allowing to add even more functionalities.
+The VR toolbox has been chosen due to the familiarity that students have with MATLAB and because it allows to move the attention to the classifier, the tracker, the reference generator and the trajectory tracking control thanks to its simple structure. The overall architecture is quite modular so that each block can be easily replaced with others by simplifying the development phase and by allowing to add even more functionalities.
 
 The code is released under Apache license, thus making it available for scientific and educational activities.
 
-The platform has been developed by using the 2015b release of MATLAB but it is compatible with any successive MATLAB release. For running the Simulink schemes and Matlab scripts, the Computer Vision System Toolbox is needed.
+The platform has been developed using the 2015b release of MATLAB but it is compatible with any other successive MATLAB release. The MathWorks Computer Vision System Toolbox is needed for running the Simulink schemes and Matlab scripts.
 
 Below we provide the instructions necessary for getting started. 
 
-If you are using the simulator within the research for your publication, please take a look at the [Publications](https://github.com/gsilano/MAT-Fly/wiki/Publications) page. Currently, an extension work is under review. It will be available as soon as it is ready.
+If you are using the simulator within the research for your publication, please take a look at the [Publications](https://github.com/gsilano/MAT-Fly/wiki/Publications) page. 
  
 # Basic Usage
 
-Starting the simulation is quite simple as well as customizing it. Simply run the MATLAB ```main``` script in the repository ```Object_detection_and_tracking_simulator```.
-
-A menu allows to choose the simulation you are interested in:
+Starting the simulation is quite simple as well as customizing it. Indeed, it is enough to run the MATLAB ```main``` script reported in the ```Object_detection_and_tracking_simulator``` repository. A menu shows the simulation options:
 
 ```
 (1) The drone follows a car along a non trivial path ("vr_octavia_2cars" scenario)
@@ -31,9 +29,9 @@ A menu allows to choose the simulation you are interested in:
 (7) The drone follows the red car to the left of of the yellow one ("vr_octavia_2cars" scenario) 
 ```
 
-By selecting the option 1, 2, 3, etc., the simulator will start. Screenshots captured from the 3D simulation scenario will be made available into the ```Acquisition``` folder (it is created at runtime if not yet available).
+Once selected the simulation scenario, the simulator starts taking screenshots from the 3D simulation scenario and making them available into the ```Acquisition``` folder (it is created at runtime if not yet available).
 
-With the aim of making easy the reuse of the proposed software platform, an offline dataset has been created and made available (links are reported below). The dataset allows quickly to design the classifier and the flight control system, to check the perfomance of the MATLAB script designed for automatically recognized the target ROIs (Region Of Interests) within the frames, etc..
+With the aim of making easy the reuse of the proposed software platform, an offline dataset has been created and made available (links are reported below). The dataset allows to quickly design the classifier and the flight control system, to check the perfomance of the MATLAB script for automatically recognize the ROIs (Region Of Interests) within the frames, etc..
 
 * [Images_cropped](https://mega.nz/#!psdBhSqC!SSIVPsrEstTuze0cYI9ZETBcC2nevCjySeRerE_S9lg);
 * [Negative_images](https://mega.nz/#!IoFDmChY!UgtC4ml__xQrLv2i7jiqCUIzD8KPZ2-KRhhtgrcV3Tw);
