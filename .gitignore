@@ -26,3 +26,6 @@ codegen/
 
 # Octave session info
 octave-workspace
+
+# For neglecting the files into the Wiki folder
+MAT-Fly.wiki/*
