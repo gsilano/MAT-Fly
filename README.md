@@ -14,6 +14,8 @@ The platform has been developed using the 2015b release of MATLAB but it is comp
 Below we provide the instructions necessary for getting started. 
 
 If you are using the simulator within the research for your publication, please take a look at the [Publications](https://github.com/gsilano/MAT-Fly/wiki/Publications) page. 
+
+The tool is also available on the [MathWorks Exchange web site](https://it.mathworks.com/matlabcentral/fileexchange/72486-mat-fly).
  
 # Basic Usage
 
