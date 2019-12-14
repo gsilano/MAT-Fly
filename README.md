@@ -1,6 +1,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+[![View MAT-Fly on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://it.mathworks.com/matlabcentral/fileexchange/72486-mat-fly)
 
 # MAT-Fly
 MAT-Fly is a numerical simulation platform for multi-rotors aircraft characterized by the ease of use and control development. The platform is based on MATLAB and the MathWorks Virtual Reality (VR) Toolbox that work together to simulate the behavior of a drone in a 3D environment while tracking a car that moves along a non trivial path.
