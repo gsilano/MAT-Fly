@@ -49,3 +49,5 @@ Please report bugs and request features by using the [Issue Tracker](https://git
 In this section, a video provides in a direct way the effectiveness of the proposed platform. Links to other videos are available in the related papers and on the YouTube channel. Enjoy! :)
 
 [![MAT-Fly YouTube video. Drone follows the car along a non trivial scenario.](https://github.com/gsilano/MAT-Fly/wiki/images/Miniature_MAT-Fly.png)](https://youtu.be/b8mTHRkRDmA "MAT-Fly, YouTube video. Drone follows the car along a non trivial scenario.")
+
+[![MAT-Fly YouTube video. Package video description.](https://github.com/gsilano/MAT-Fly/wiki/images/Miniature_MAT-Fly_2.png)](https://youtu.be/cRRBmiYFM-U "MAT-Fly: A numerical 3D simulation platform based on MATLAB and the MathWorks VR toolbox")
