@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+preferred-citation:
+  type: journal
+  authors:
+  - family-names: "Silano"
+    given-names: "Giuseppe"
+    orcid: "https://orcid.org/0000-0002-6816-6002"
+  - family-names: "Iannelli"
+    given-names: "Luigi"
+    orcid: "https://orcid.org/0000-0003-2034-0005"
+  doi: "10.1109/ACCESS.2021.3064758"
+  title: "Software-in-the-loop simulation for improving flight control system design: a quadrotor case study"
+  publisher: "IEEE"
+  preprint: "https://giuseppesilano.net/publications/MAT-Fly.pdf"
+  journal: "IEEE Access"
+  link: "https://ieeexplore.ieee.org/document/9373417"
+  start: 39333 # First page number
+  end: 39343 # Last page number
+  volume: 9
+  year: 2021
